@@ -834,6 +834,120 @@ h3 {
 .helpful { color: var(--text-3); }
 
 /* ============================================================
+   FACEBOOK COMMENTS
+============================================================ */
+.fb-comments-block {
+  padding: 1rem clamp(1rem, 5vw, 4rem);
+  background: var(--bg);
+}
+.fb-comments-block.on-dark { background: var(--bg-alt); }
+.fb-comments-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fb-comments-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--border);
+}
+.fb-comments-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  max-width: 100%;
+}
+.fb-comment {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 0.875rem 1.125rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  max-width: 480px;
+  flex: 1 1 300px;
+  transition: box-shadow 0.2s;
+}
+.fb-comment:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.fb-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display);
+  font-size: 0.95rem; font-weight: 700;
+  flex-shrink: 0;
+  color: #fff;
+}
+.fb-body { flex: 1; min-width: 0; }
+.fb-name {
+  font-family: var(--body);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.fb-location {
+  font-size: 0.7rem;
+  color: var(--text-3);
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+.fb-text {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+.fb-text strong { color: var(--text); }
+.fb-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-top: 0.5rem;
+}
+.fb-action {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-3);
+  cursor: pointer;
+  font-family: var(--body);
+  transition: color 0.2s;
+}
+.fb-action:hover { color: var(--accent); }
+.fb-time {
+  font-size: 0.68rem;
+  color: var(--text-3);
+  font-family: var(--mono);
+}
+.fb-likes {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+/* Colour palette for avatars */
+.av-1 { background: #2A5C43; }
+.av-2 { background: #C06030; }
+.av-3 { background: #5B4FCF; }
+.av-4 { background: #B8962C; }
+.av-5 { background: #1A7A9A; }
+.av-6 { background: #A0522D; }
+.av-7 { background: #3D7B5C; }
+.av-8 { background: #8B4513; }
+.av-9 { background: #2E6DA4; }
+.av-10{ background: #7B2D8B; }
+
+/* ============================================================
    IMAGE GALLERY
 ============================================================ */
 .gallery-strip {
@@ -1114,6 +1228,41 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   </div>
 </div>
 
+<!-- FB COMMENTS #1 & #2 — after proof strip, early trust -->
+<div class="fb-comments-block">
+  <div class="fb-comments-label">What women are saying</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment">
+      <div class="fb-avatar av-1">C</div>
+      <div class="fb-body">
+        <div class="fb-name">Chioma Okafor</div>
+        <div class="fb-location">Lagos, Nigeria</div>
+        <div class="fb-text">I saw this product on someone's story and I said let me just try it. God of mercy! After 3 days the smell I have been managing for over a year just <strong>disappeared completely.</strong> I was checking every hour because I couldn't believe it 😭❤️</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">2 days ago</span>
+          <span class="fb-likes">❤️ 847</span>
+        </div>
+      </div>
+    </div>
+    <div class="fb-comment">
+      <div class="fb-avatar av-2">A</div>
+      <div class="fb-body">
+        <div class="fb-name">Abena Mensah</div>
+        <div class="fb-location">Accra, Ghana</div>
+        <div class="fb-text">My sister recommended this to me and I almost didn't listen. Please if you are reading this and you have been suffering quietly — <strong>just order it.</strong> I wish I found it 2 years ago. The discharge that was embarrassing me every single day is gone. Gone!</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">4 days ago</span>
+          <span class="fb-likes">❤️ 1.2K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================
      PROBLEM
 ============================================================ -->
@@ -1179,6 +1328,41 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
     </div>
   </div>
 </section>
+
+<!-- FB COMMENTS #3 & #4 — after problem section, peak relatability -->
+<div class="fb-comments-block on-dark">
+  <div class="fb-comments-label">Women who felt exactly like you</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment">
+      <div class="fb-avatar av-3">F</div>
+      <div class="fb-body">
+        <div class="fb-name">Fatima Aliyu</div>
+        <div class="fb-location">Abuja, Nigeria</div>
+        <div class="fb-text">The part about being scared someone at work will notice — that is exactly my life. I used to spray perfume on my underwear before leaving the house every morning. After one week of URO <strong>I haven't needed to do that once.</strong> My confidence is back 🙏🏾</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">1 week ago</span>
+          <span class="fb-likes">❤️ 2.3K</span>
+        </div>
+      </div>
+    </div>
+    <div class="fb-comment">
+      <div class="fb-avatar av-4">W</div>
+      <div class="fb-body">
+        <div class="fb-name">Wanjiru Kamau</div>
+        <div class="fb-location">Nairobi, Kenya</div>
+        <div class="fb-text">I used to change my underwear twice a day and still wasn't confident. I tried yoghurt, I tried every herb, I went to the clinic 4 times. Nothing worked long term. This product worked when <strong>everything else failed.</strong> I'm telling every woman I know 🔥</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">5 days ago</span>
+          <span class="fb-likes">❤️ 986</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================
      EMPATHY / YOU ARE NOT ALONE
@@ -1290,6 +1474,27 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   </div>
 </div>
 
+<!-- FB COMMENT #5 — after before/after emotional peak -->
+<div class="fb-comments-block">
+  <div class="fb-comments-label">After seeing the transformation</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment">
+      <div class="fb-avatar av-5">N</div>
+      <div class="fb-body">
+        <div class="fb-name">Naledi Dlamini</div>
+        <div class="fb-location">Johannesburg, South Africa</div>
+        <div class="fb-text">The before and after is EXACTLY my story. I was the before for 3 years. Crying at night, avoiding my boyfriend, scared of my own body. Today I am the after. <strong>URO gave me my life back.</strong> I don't have words to explain the relief 😭🙏🏾</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">3 days ago</span>
+          <span class="fb-likes">❤️ 3.1K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================
      BENEFITS
 ============================================================ -->
@@ -1325,6 +1530,41 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   </div>
 </section>
 
+<!-- FB COMMENTS #6 & #7 — after benefits, building conviction -->
+<div class="fb-comments-block on-dark">
+  <div class="fb-comments-label">On the benefits</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment">
+      <div class="fb-avatar av-6">A</div>
+      <div class="fb-body">
+        <div class="fb-name">Adaeze Nwosu</div>
+        <div class="fb-location">Enugu, Nigeria</div>
+        <div class="fb-text">The itching used to wake me up at night. I would scratch and feel so ashamed of myself. Now I sleep peacefully. <strong>No itch. No smell. No discharge.</strong> My husband thinks I went for a medical procedure because the change was so drastic 😂❤️</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">6 days ago</span>
+          <span class="fb-likes">❤️ 1.7K</span>
+        </div>
+      </div>
+    </div>
+    <div class="fb-comment">
+      <div class="fb-avatar av-7">E</div>
+      <div class="fb-body">
+        <div class="fb-name">Efua Asante</div>
+        <div class="fb-location">Kumasi, Ghana</div>
+        <div class="fb-text">What got me was when they said it also protects you after your period and after intimacy. That is when mine always came back — every single month like clockwork. I'm 2 months in now and <strong>it has not returned once.</strong> Not once! 🎉🙌🏾</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">2 weeks ago</span>
+          <span class="fb-likes">❤️ 2.8K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================
      HOW IT WORKS
 ============================================================ -->
@@ -1349,6 +1589,27 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
     </div>
   </div>
 </section>
+
+<!-- FB COMMENT #8 — after how it works -->
+<div class="fb-comments-block">
+  <div class="fb-comments-label">After understanding how it works</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment">
+      <div class="fb-avatar av-8">B</div>
+      <div class="fb-body">
+        <div class="fb-name">Blessing Okonkwo</div>
+        <div class="fb-location">Port Harcourt, Nigeria</div>
+        <div class="fb-text">When I understood that the problem was bacteria imbalance it all made sense. All those years I was treating the symptom not the cause. Two capsules in the morning with water. That's it. <strong>Day 5 everything changed.</strong> Please don't waste more years like I did 🙏🏾</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">1 week ago</span>
+          <span class="fb-likes">❤️ 1.4K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================
      INGREDIENTS
@@ -1460,6 +1721,27 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   </div>
 </section>
 
+<!-- FB COMMENT #9 — after video testimonial in reviews -->
+<div class="fb-comments-block on-dark">
+  <div class="fb-comments-label">After watching the video</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment">
+      <div class="fb-avatar av-9">A</div>
+      <div class="fb-body">
+        <div class="fb-name">Aisha Bello</div>
+        <div class="fb-location">Kano, Nigeria</div>
+        <div class="fb-text">I watched this video and I was in tears because that was exactly me. I ordered the same day. That was 3 weeks ago. My only regret is that <strong>I didn't find this sooner.</strong> To every woman still doubting — please just try it. You have nothing to lose and everything to gain 💚</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">3 days ago</span>
+          <span class="fb-likes">❤️ 4.2K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================
      IMAGE GALLERY
 ============================================================ -->
@@ -1549,6 +1831,27 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
     </details>
   </div>
 </section>
+
+<!-- FB COMMENT #10 — final push before CTA -->
+<div class="fb-comments-block">
+  <div class="fb-comments-label">The comment that made women order</div>
+  <div class="fb-comments-inner">
+    <div class="fb-comment" style="max-width:600px;flex:unset;">
+      <div class="fb-avatar av-10">A</div>
+      <div class="fb-body">
+        <div class="fb-name">Amina Hassan</div>
+        <div class="fb-location">Kampala, Uganda</div>
+        <div class="fb-text">I want to speak to any woman reading this who is still on the fence. I was embarrassed to even buy this because I didn't want anyone to know about my problem. But I ordered quietly and it arrived in a plain package. <strong>Within one week my life changed completely.</strong> My relationship improved. My confidence at work improved. I stopped avoiding people. I stopped walking with fear. This small bottle did what 3 years of suffering could not fix. Order it today. Do it for yourself. You deserve to feel clean and free. 💚🙏🏾</div>
+        <div class="fb-footer">
+          <span class="fb-action">👍 Like</span>
+          <span class="fb-action">Reply</span>
+          <span class="fb-time">5 days ago</span>
+          <span class="fb-likes">❤️ 7.6K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================
      FINAL CTA
