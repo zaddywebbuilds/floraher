@@ -780,37 +780,72 @@ h3 {
 ============================================================ */
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.25rem;
   margin-top: 3rem;
 }
+/* Row 1: 3 cards equal width */
+.benefit-card:nth-child(1) { grid-column: span 2; }
+.benefit-card:nth-child(2) { grid-column: span 2; }
+.benefit-card:nth-child(3) { grid-column: span 2; }
+/* Row 2: 2 cards centered */
+.benefit-card:nth-child(4) { grid-column: 2 / span 2; }
+.benefit-card:nth-child(5) { grid-column: 4 / span 2; }
+
 .benefit-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--rl);
-  padding: 2rem 1.75rem;
+  overflow: hidden;
   transition: transform 0.22s, box-shadow 0.22s;
-  position: relative; overflow: hidden;
+  position: relative;
+  display: flex; flex-direction: column;
 }
 .benefit-card::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0;
   height: 3px; background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
+  transform: scaleX(0); transform-origin: left;
   transition: transform 0.3s;
 }
 .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.1); }
 .benefit-card:hover::after { transform: scaleX(1); }
+
+.benefit-img {
+  width: 100%; height: 190px;
+  object-fit: cover; object-position: top center;
+  display: block;
+  flex-shrink: 0;
+}
+.benefit-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+  display: flex; flex-direction: column; flex: 1;
+}
 .benefit-icon {
-  width: 46px; height: 46px;
+  width: 40px; height: 40px;
   background: var(--accent-lt);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.25rem; font-size: 1.2rem;
+  margin-bottom: 1rem; font-size: 1.1rem;
+  flex-shrink: 0;
 }
-.benefit-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
-.benefit-card p { font-size: 0.875rem; color: var(--text-2); line-height: 1.65; }
+.benefit-card h3 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.3; }
+.benefit-card p { font-size: 0.858rem; color: var(--text-2); line-height: 1.65; }
+
+@media (max-width: 820px) {
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .benefit-card:nth-child(1),
+  .benefit-card:nth-child(2),
+  .benefit-card:nth-child(3),
+  .benefit-card:nth-child(4),
+  .benefit-card:nth-child(5) { grid-column: span 1; }
+  .benefit-card:nth-child(5) { grid-column: 1 / span 2; }
+}
+@media (max-width: 480px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .benefit-card:nth-child(n) { grid-column: span 1; }
+  .benefit-img { height: 160px; }
+}
 
 /* ============================================================
    HOW IT WORKS
@@ -1742,69 +1777,67 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   <div class="section-label">What URO Does For You</div>
   <h2>Five Things That Will <em>Change</em> For You</h2>
   <div class="benefits-grid">
+
     <div class="benefit-card">
-      <div class="benefit-icon">🌸</div>
-      <h3>Eliminates the Smell — From Inside</h3>
-      <p>URO restores the good bacteria that naturally fight odor-causing germs. No perfume, no soap trick — the source of the smell is removed completely.</p>
+      <img class="benefit-img" src="images/after-happy-1.jpg"
+        alt="African woman confident and fresh after URO" loading="lazy" decoding="async"
+        style="object-position:center top;">
+      <div class="benefit-body">
+        <div class="benefit-icon">🌸</div>
+        <h3>Eliminates the Smell — From Inside</h3>
+        <p>URO restores the good bacteria that naturally fight odor-causing germs. No perfume, no soap trick — the source of the smell is removed completely.</p>
+      </div>
     </div>
+
     <div class="benefit-card">
-      <div class="benefit-icon">⚖️</div>
-      <h3>Stops the Abnormal Discharge</h3>
-      <p>Whitish, yellowish discharge that keeps coming back is a sign your pH is off. URO balances it naturally so your body returns to normal on its own.</p>
+      <img class="benefit-img" src="images/discharge-tissue.png"
+        alt="Discharge evidence — what URO stops" loading="lazy" decoding="async"
+        style="object-position:center;filter:saturate(0.7);">
+      <div class="benefit-body">
+        <div class="benefit-icon">⚖️</div>
+        <h3>Stops the Abnormal Discharge</h3>
+        <p>Whitish, yellowish discharge that keeps coming back is a sign your pH is off. URO balances it naturally so your body returns to normal on its own.</p>
+      </div>
     </div>
+
     <div class="benefit-card">
-      <div class="benefit-icon">🛡️</div>
-      <h3>Ends the Itching and Burning</h3>
-      <p>When your good bacteria are restored, yeast and bad germs can no longer thrive. The itching, the burning, the constant irritation — it stops.</p>
+      <img class="benefit-img" src="images/scratching-discomfort.jpg"
+        alt="Woman suffering from itching before URO" loading="lazy" decoding="async"
+        style="object-position:center 30%;">
+      <div class="benefit-body">
+        <div class="benefit-icon">🛡️</div>
+        <h3>Ends the Itching and Burning</h3>
+        <p>When your good bacteria are restored, yeast and bad germs can no longer thrive. The itching, the burning, the constant irritation — it stops.</p>
+      </div>
     </div>
+
     <div class="benefit-card">
-      <div class="benefit-icon">✨</div>
-      <h3>Protects You After Your Period & Intimacy</h3>
-      <p>Many women notice the problem returns after their period or after sex. URO rebuilds the protective bacteria that prevent this cycle from repeating.</p>
+      <img class="benefit-img" src="images/after-happy-2.jpg"
+        alt="African woman relaxed and protected after URO" loading="lazy" decoding="async"
+        style="object-position:center top;">
+      <div class="benefit-body">
+        <div class="benefit-icon">✨</div>
+        <h3>Protects You After Your Period & Intimacy</h3>
+        <p>Many women notice the problem returns after their period or after sex. URO rebuilds the protective bacteria that prevent this cycle from repeating.</p>
+      </div>
     </div>
+
     <div class="benefit-card">
-      <div class="benefit-icon">⚡</div>
-      <h3>Feel the Difference in 7 Days</h3>
-      <p>Many women notice results in the first week. Full protection builds over 2 months. Just 2 capsules a day — that is all it takes to begin your transformation.</p>
+      <img class="benefit-img" src="images/with-product.jpg"
+        alt="Woman holding URO — feel the difference in 7 days" loading="lazy" decoding="async"
+        style="object-position:center top;">
+      <div class="benefit-body">
+        <div class="benefit-icon">⚡</div>
+        <h3>Feel the Difference in 7 Days</h3>
+        <p>Many women notice results in the first week. Full protection builds over 2 months. Just 2 capsules a day — that is all it takes to begin your transformation.</p>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- FB COMMENTS #6 & #7 — after benefits, building conviction -->
-<div class="fb-comments-block on-dark">
-  <div class="fb-comments-label">On the benefits</div>
-  <div class="fb-comments-inner">
-    <div class="fb-comment">
-      <div class="fb-avatar av-6">A</div>
-      <div class="fb-body">
-        <div class="fb-name">Adaeze Nwosu</div>
-        <div class="fb-text">The itching used to wake me up at night. I would scratch and feel so ashamed of myself. Now I sleep peacefully. <strong>No itch. No smell. No discharge.</strong> My husband thinks I went for a medical procedure because the change was so drastic 😂❤️</div>
-        <div class="fb-footer">
-          <span class="fb-action">👍 Like</span>
-          <span class="fb-action">Reply</span>
-          <span class="fb-time">6 days ago</span>
-          <span class="fb-likes">❤️ 1.7K</span>
-        </div>
-      </div>
-    </div>
-    <div class="fb-comment">
-      <div class="fb-avatar av-7">E</div>
-      <div class="fb-body">
-        <div class="fb-name">Efua Asante</div>
-        <div class="fb-text">What got me was when they said it also protects you after your period and after intimacy. That is when mine always came back — every single month like clockwork. I'm 2 months in now and <strong>it has not returned once.</strong> Not once! 🎉🙌🏾</div>
-        <div class="fb-footer">
-          <span class="fb-action">👍 Like</span>
-          <span class="fb-action">Reply</span>
-          <span class="fb-time">2 weeks ago</span>
-          <span class="fb-likes">❤️ 2.8K</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ============================================================
-     HOW IT WORKS
+     HOW IT WORKS — placed before benefits so mechanism is understood first
 ============================================================ -->
 <section class="section how-bg reveal" id="how">
   <div class="section-label">How URO Works</div>
@@ -1828,7 +1861,7 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   </div>
 </section>
 
-<!-- FB COMMENT #8 — after how it works -->
+<!-- FB COMMENT — after understanding how it works -->
 <div class="fb-comments-block">
   <div class="fb-comments-label">After understanding how it works</div>
   <div class="fb-comments-inner">
