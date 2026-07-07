@@ -252,59 +252,118 @@ h1 em { font-style: italic; color: var(--accent); }
 .hero-visual {
   position: relative; z-index: 2;
   display: flex; justify-content: center; align-items: center;
-  padding: 4rem 0;
+  padding: 5rem 2rem;
+  min-height: 480px;
 }
-.product-pod {
+
+/* ---- Hero video wrapper ---- */
+.hero-video-wrap {
   position: relative;
+  width: clamp(220px, 28vw, 320px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.25), 0 0 0 4px rgba(255,255,255,0.08);
   animation: float 7s ease-in-out infinite;
+  flex-shrink: 0;
 }
+.hero-vid {
+  width: 100%; display: block;
+  border-radius: 20px;
+}
+
 @keyframes float {
   0%,100% { transform: translateY(0); }
   50%      { transform: translateY(-14px); }
 }
-@media (prefers-reduced-motion: reduce) { .product-pod { animation: none; } }
-
-.product-pod img {
-  width: 320px;
-  height: 320px;
-  object-fit: contain;
-  filter: drop-shadow(0 32px 48px rgba(0,0,0,0.18));
-  border-radius: 8px;
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-wrap, .face-orbit { animation: none !important; }
 }
 
 .pod-badge {
-  position: absolute; top: 16px; right: -16px;
+  position: absolute; top: 14px; right: -10px;
   background: var(--gold); color: #fff;
-  font-family: var(--mono); font-size: 0.6rem;
+  font-family: var(--mono); font-size: 0.58rem;
   letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.4rem 0.85rem; border-radius: 2px; font-weight: 700;
+  padding: 0.35rem 0.8rem; border-radius: 2px; font-weight: 700;
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Satellite orbs */
-.orb {
-  position: absolute; border-radius: 50%; pointer-events: none;
+/* ---- Floating face circles ---- */
+@keyframes face-float-a {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-18px) rotate(2deg); }
 }
-.orb-1 {
-  width: 70px; height: 70px;
-  background: var(--accent-lt);
-  top: 8%; left: 5%; opacity: 0.7;
-  animation: float 9s ease-in-out infinite 1s;
+@keyframes face-float-b {
+  0%,100% { transform: translateY(0) rotate(2deg); }
+  50%      { transform: translateY(16px) rotate(-3deg); }
 }
-.orb-2 {
-  width: 44px; height: 44px;
-  background: var(--warm-lt);
-  bottom: 18%; right: 4%; opacity: 0.8;
-  animation: float 8s ease-in-out infinite 2.5s;
+@keyframes face-float-c {
+  0%,100% { transform: translateY(-8px) rotate(1deg); }
+  50%      { transform: translateY(10px) rotate(-2deg); }
 }
-.orb-3 {
-  width: 26px; height: 26px;
-  background: var(--accent-lt);
-  bottom: 8%; left: 18%; opacity: 0.6;
-  animation: float 10s ease-in-out infinite 0.7s;
+@keyframes face-in {
+  from { opacity:0; transform: scale(0.4); }
+  to   { opacity:1; transform: scale(1); }
 }
-@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+
+.face-orbit {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  opacity: 0;
+  animation: face-in 0.5s cubic-bezier(.22,.68,0,1.3) forwards;
+}
+.face-orbit img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+
+/* Positions — absolute relative to .hero-visual */
+.face-1 {
+  width: 82px; height: 82px;
+  top: 6%; left: 4%;
+  animation: face-in 0.5s 0.3s cubic-bezier(.22,.68,0,1.3) forwards,
+             face-float-a 8s 0.8s ease-in-out infinite;
+}
+.face-2 {
+  width: 68px; height: 68px;
+  top: 2%; right: 6%;
+  animation: face-in 0.5s 0.5s cubic-bezier(.22,.68,0,1.3) forwards,
+             face-float-b 9s 0.5s ease-in-out infinite;
+}
+.face-3 {
+  width: 76px; height: 76px;
+  top: 38%; right: 2%;
+  animation: face-in 0.5s 0.7s cubic-bezier(.22,.68,0,1.3) forwards,
+             face-float-c 7.5s 1s ease-in-out infinite;
+}
+.face-4 {
+  width: 86px; height: 86px;
+  bottom: 6%; right: 8%;
+  animation: face-in 0.5s 0.9s cubic-bezier(.22,.68,0,1.3) forwards,
+             face-float-a 10s 1.5s ease-in-out infinite;
+}
+.face-5 {
+  width: 72px; height: 72px;
+  bottom: 4%; left: 5%;
+  animation: face-in 0.5s 1.1s cubic-bezier(.22,.68,0,1.3) forwards,
+             face-float-b 8.5s 0.3s ease-in-out infinite;
+}
+.face-6 {
+  width: 64px; height: 64px;
+  top: 42%; left: 1%;
+  animation: face-in 0.5s 1.3s cubic-bezier(.22,.68,0,1.3) forwards,
+             face-float-c 11s 0.7s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .face-orbit { display: none; }
+  .hero-video-wrap { width: 80vw; }
+}
 
 /* ============================================================
    PROOF STRIP
@@ -1225,16 +1284,33 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   </div>
 
   <div class="hero-visual">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="product-pod">
+    <!-- Central hero video -->
+    <div class="hero-video-wrap">
       <div class="pod-badge">#1 Best Seller</div>
-      <img
-        src="https://m.media-amazon.com/images/I/51L1a4u7LnL._SL1500_.jpg"
-        alt="O Positiv URO Vaginal Probiotics bottle — 60 capsules"
-        width="320" height="320"
-      >
+      <video class="hero-vid" src="images/hero-intro.mp4"
+        autoplay muted loop playsinline
+        poster="images/with-product.jpg">
+      </video>
+    </div>
+
+    <!-- Floating African women faces that orbit the video -->
+    <div class="face-orbit face-1">
+      <img src="images/after-happy-1.jpg" alt="URO customer — satisfied">
+    </div>
+    <div class="face-orbit face-2">
+      <img src="images/after-happy-2.jpg" alt="URO customer — happy">
+    </div>
+    <div class="face-orbit face-3">
+      <img src="images/with-product.jpg" alt="Customer holding URO">
+    </div>
+    <div class="face-orbit face-4">
+      <img src="images/african-woman-crying.jpg" alt="Before testimonial">
+    </div>
+    <div class="face-orbit face-5">
+      <img src="images/distressed-night.jpg" alt="Before testimonial">
+    </div>
+    <div class="face-orbit face-6">
+      <img src="images/stressed-sitting.jpg" alt="Before testimonial">
     </div>
   </div>
 </section>
