@@ -1647,6 +1647,155 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
 }
 
 /* ============================================================
+   STICKY BUY BAR
+============================================================ */
+.sticky-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9990;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 0.7rem 1.5rem;
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(.22,.68,0,1.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.sticky-bar.show { transform: translateY(0); }
+.sticky-bar-left { display: flex; align-items: center; gap: 0.75rem; flex: 1; }
+.sticky-bar-logo { font-family: var(--display); font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
+.sticky-bar-tagline { font-size: 0.8rem; opacity: 0.75; display: none; }
+@media (min-width: 560px) { .sticky-bar-tagline { display: block; } }
+.sticky-bar .btn-cta { padding: 0.55rem 1.25rem; font-size: 0.85rem; white-space: nowrap; flex-shrink: 0; background:#fff; color:var(--accent); border-radius:50px; font-weight:700; text-decoration:none; transition:opacity .2s; }
+.sticky-bar .btn-cta:hover { opacity: 0.9; }
+
+/* ============================================================
+   COUNTDOWN TIMER
+============================================================ */
+.countdown-wrap {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem; margin: 1.5rem 0 0.5rem; flex-wrap: wrap;
+}
+.countdown-label {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.65);
+  width: 100%; text-align: center; margin-bottom: 0.4rem;
+}
+.cd-block {
+  background: rgba(255,255,255,0.15); border-radius: 8px;
+  padding: 0.6rem 0.9rem; min-width: 62px; text-align: center;
+}
+.cd-num {
+  font-family: var(--display); font-size: 1.8rem; font-weight: 700;
+  line-height: 1; color: #fff; display: block;
+  font-variant-numeric: tabular-nums;
+}
+.cd-unit {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55); display: block; margin-top: 2px;
+}
+.cd-sep { font-size: 1.6rem; font-weight: 700; color: rgba(255,255,255,0.4); align-self: flex-start; margin-top: 0.5rem; }
+
+/* ============================================================
+   COMPARISON TABLE
+============================================================ */
+.compare-section { background: var(--bg); }
+.compare-table-wrap { overflow-x: auto; margin-top: 2rem; }
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  font-family: var(--body); font-size: 0.9rem;
+  min-width: 540px;
+}
+.compare-table th {
+  padding: 0.85rem 1rem; text-align: center;
+  font-family: var(--display); font-weight: 700; font-size: 0.95rem;
+  border-bottom: 2px solid var(--border);
+}
+.compare-table th.col-uro {
+  background: var(--accent); color: #fff; border-radius: 10px 10px 0 0;
+}
+.compare-table td {
+  padding: 0.75rem 1rem; text-align: center;
+  border-bottom: 1px solid var(--border); color: var(--text-2);
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { text-align: left; font-weight: 600; color: var(--text); }
+.compare-table td.col-uro { background: rgba(42,92,67,0.06); }
+.ct-yes { color: #2A5C43; font-size: 1.15rem; }
+.ct-no  { color: #c0392b; font-size: 1.15rem; }
+.ct-partial { color: #B8962C; font-size: 1.05rem; }
+
+/* ============================================================
+   TRANSFORMATION TIMELINE
+============================================================ */
+.timeline-section { background: var(--bg-alt); }
+.timeline-track {
+  display: flex; gap: 0; margin-top: 2.5rem; position: relative;
+  overflow-x: auto; padding-bottom: 0.5rem;
+}
+.timeline-track::before {
+  content: ''; position: absolute; top: 28px; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-lt), var(--accent));
+  z-index: 0;
+}
+.tl-step {
+  flex: 1; min-width: 140px; text-align: center; position: relative; padding: 0 0.5rem;
+}
+.tl-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-family: var(--display); font-weight: 700; font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  margin: 0 auto 1rem; position: relative; z-index: 1;
+  box-shadow: 0 4px 14px rgba(42,92,67,0.3);
+  line-height: 1.2;
+}
+.tl-dot span { font-size: 0.55rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; }
+.tl-title { font-family: var(--display); font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+.tl-desc { font-size: 0.78rem; color: var(--text-2); line-height: 1.5; }
+
+/* ============================================================
+   EXIT INTENT POPUP
+============================================================ */
+#exit-popup {
+  position: fixed; inset: 0; z-index: 99999;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+}
+#exit-popup.show { opacity: 1; pointer-events: auto; }
+.exit-box {
+  background: var(--surface); border-radius: 20px;
+  max-width: 440px; width: 100%; padding: 2.5rem 2rem;
+  text-align: center; position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+}
+.exit-close {
+  position: absolute; top: 1rem; right: 1.2rem;
+  background: none; border: none; font-size: 1.4rem;
+  color: var(--text-3); cursor: pointer;
+}
+.exit-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.exit-box h3 { font-family: var(--display); font-size: 1.4rem; color: var(--text); margin-bottom: 0.5rem; }
+.exit-box p { font-size: 0.88rem; color: var(--text-2); line-height: 1.65; margin-bottom: 1.5rem; }
+.exit-box .btn-cta { display: block; width: 100%; padding: 0.9rem; font-size: 1rem; border-radius: 50px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; font-family: var(--display); transition: opacity .2s; }
+.exit-box .btn-cta:hover { opacity: 0.88; }
+.exit-skip { margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-3); cursor: pointer; text-decoration: underline; display: block; }
+
+/* ============================================================
+   PAYMENT METHODS
+============================================================ */
+.payment-icons {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0 0;
+}
+.pay-badge {
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px; padding: 0.3rem 0.7rem;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.9); white-space: nowrap;
+}
+
+/* ============================================================
    SCROLL REVEAL
 ============================================================ */
 .reveal {
@@ -1662,6 +1811,27 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
 <body>
 <!-- Scroll progress bar -->
 <div id="scroll-progress"></div>
+
+<!-- Sticky buy bar -->
+<div class="sticky-bar" id="sticky-bar">
+  <div class="sticky-bar-left">
+    <div class="sticky-bar-logo">URO Vaginal Probiotics</div>
+    <div class="sticky-bar-tagline">Ends smell, discharge &amp; burning — naturally</div>
+  </div>
+  <a class="btn-cta" href="#buy">Order Now →</a>
+</div>
+
+<!-- Exit intent popup -->
+<div id="exit-popup">
+  <div class="exit-box">
+    <button class="exit-close" id="exit-close" aria-label="Close">×</button>
+    <div class="exit-emoji">🛑</div>
+    <h3>Wait — Before You Go</h3>
+    <p>Thousands of women almost left this page too. Then they ordered. One week later, they were crying tears of relief. The smell was gone. The discharge was gone. The fear was gone.<br><br><strong>You deserve that too.</strong></p>
+    <a href="#buy" class="btn-cta" id="exit-cta">Yes — I Want My Life Back →</a>
+    <span class="exit-skip" id="exit-skip">No thanks, I prefer to keep suffering</span>
+  </div>
+</div>
 
 <!-- ============================================================
      NAV
@@ -2342,6 +2512,122 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
 </div>
 
 <!-- ============================================================
+     TRANSFORMATION TIMELINE
+============================================================ -->
+<section class="section timeline-section reveal">
+  <div class="section-label">Your Journey</div>
+  <h2>What Happens After You Start URO</h2>
+  <div class="timeline-track">
+    <div class="tl-step">
+      <div class="tl-dot">Day<span>1–3</span></div>
+      <div class="tl-title">You Begin</div>
+      <div class="tl-desc">Good bacteria start colonising. You may notice less irritation within 48–72 hours.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">Day<span>7</span></div>
+      <div class="tl-title">Smell Fades</div>
+      <div class="tl-desc">Most women report the odour reducing significantly by day 7. Discharge begins to normalise.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">Week<span>3–4</span></div>
+      <div class="tl-title">Balance Restores</div>
+      <div class="tl-desc">pH is stabilising. Itching and burning are noticeably less. Confidence starts returning.</div>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">Month<span>2</span></div>
+      <div class="tl-title">Full Protection</div>
+      <div class="tl-desc">Lactobacillus fully colonised. You are protected from recurrence — naturally, every day.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPARISON TABLE
+============================================================ -->
+<section class="section compare-section reveal">
+  <div class="section-label">Why URO Wins</div>
+  <h2>URO vs. Everything Else You've Tried</h2>
+  <div class="compare-table-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">What it does</th>
+          <th class="col-uro">✅ URO Probiotics</th>
+          <th>Antibiotics</th>
+          <th>Creams / Gels</th>
+          <th>Doing Nothing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kills bad bacteria</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-yes">✔</span></td>
+          <td><span class="ct-partial">~</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>Restores good bacteria</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>Stops recurrence long-term</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>No embarrassing application</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-yes">✔</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-yes">✔</span></td>
+        </tr>
+        <tr>
+          <td>Safe for long-term daily use</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-partial">~</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>Eliminates odour</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-partial">~</span></td>
+          <td><span class="ct-partial">~</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>Works within 7 days</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-yes">✔</span></td>
+          <td><span class="ct-partial">~</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>Clinically studied strains</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-yes">✔</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+        <tr>
+          <td>30-day money-back guarantee</td>
+          <td class="col-uro"><span class="ct-yes">✔</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+          <td><span class="ct-no">✘</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================
      FAQ
 ============================================================ -->
 <section class="section reveal">
@@ -2430,6 +2716,18 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   <h2>Sister, Today Is the Day<br>You Stop Suffering in Silence</h2>
   <p>Over 36,000 women have already made this decision. They ordered URO, and within one week their lives changed. The smell stopped. The discharge stopped. The fear stopped. You deserve that same freedom — starting today.</p>
 
+  <!-- Countdown -->
+  <div style="position:relative;z-index:1;">
+    <div class="countdown-wrap">
+      <div class="countdown-label">⚡ Special offer ends in</div>
+      <div class="cd-block"><span class="cd-num" id="cd-h">00</span><span class="cd-unit">hrs</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-block"><span class="cd-num" id="cd-m">00</span><span class="cd-unit">min</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-block"><span class="cd-num" id="cd-s">00</span><span class="cd-unit">sec</span></div>
+    </div>
+  </div>
+
   <!-- Price -->
   <div class="price-block" style="position:relative;z-index:1;">
     <div class="price-current" style="color:#fff;">$34.99</div>
@@ -2455,6 +2753,20 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
   <a class="btn-white" href="https://www.amazon.com/dp/B0D5FZGY8W" target="_blank" rel="noopener noreferrer">
     Yes — Order URO Now →
   </a>
+
+  <!-- Payment methods -->
+  <div style="position:relative;z-index:1;">
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.55);margin:1.25rem 0 0.5rem;font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase;">Accepted payment methods</p>
+    <div class="payment-icons">
+      <span class="pay-badge">💳 Visa</span>
+      <span class="pay-badge">💳 Mastercard</span>
+      <span class="pay-badge">🏦 Bank Transfer</span>
+      <span class="pay-badge">📱 Paystack</span>
+      <span class="pay-badge">🌍 Flutterwave</span>
+      <span class="pay-badge">💚 WhatsApp Order</span>
+    </div>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.5rem;">Delivers to Nigeria · Ghana · Kenya · South Africa · Uganda · Rwanda</p>
+  </div>
 
   <!-- Refund process — clear steps -->
   <div style="position:relative;z-index:1;margin-top:1.5rem;">
@@ -2705,6 +3017,56 @@ footer p { font-size: 0.78rem; color: var(--text-3); max-width: 400px; line-heig
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.benefits-grid .benefit-card').forEach(el => cardObserver.observe(el));
+
+  // ── Sticky buy bar ──────────────────────────────────────
+  const stickyBar = document.getElementById('sticky-bar');
+  const heroSection = document.querySelector('.orbit-stage') || document.querySelector('section');
+  window.addEventListener('scroll', () => {
+    const threshold = window.innerHeight * 0.85;
+    stickyBar.classList.toggle('show', window.scrollY > threshold);
+  }, { passive: true });
+
+  // ── Countdown timer (resets every 24h from first visit) ──
+  const CD_KEY = 'uro_cd_end';
+  let cdEnd = parseInt(sessionStorage.getItem(CD_KEY));
+  if (!cdEnd || cdEnd < Date.now()) {
+    cdEnd = Date.now() + 4 * 3600 * 1000 + Math.floor(Math.random() * 3600000);
+    sessionStorage.setItem(CD_KEY, cdEnd);
+  }
+  function updateCd() {
+    const diff = Math.max(0, cdEnd - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    if (diff > 0) setTimeout(updateCd, 1000);
+  }
+  updateCd();
+
+  // ── Exit intent popup ────────────────────────────────────
+  const exitPopup = document.getElementById('exit-popup');
+  let exitShown = false;
+  function showExit() {
+    if (exitShown) return;
+    exitShown = true;
+    exitPopup.classList.add('show');
+  }
+  document.addEventListener('mouseleave', e => { if (e.clientY < 10) showExit(); });
+  setTimeout(() => {
+    if (!exitShown) {
+      let lastScroll = window.scrollY;
+      const scrollCheck = setInterval(() => {
+        if (window.scrollY < lastScroll - 200) { showExit(); clearInterval(scrollCheck); }
+        lastScroll = window.scrollY;
+      }, 500);
+    }
+  }, 15000);
+  document.getElementById('exit-close').addEventListener('click', () => exitPopup.classList.remove('show'));
+  document.getElementById('exit-skip').addEventListener('click', () => exitPopup.classList.remove('show'));
+  document.getElementById('exit-cta').addEventListener('click', () => exitPopup.classList.remove('show'));
+  exitPopup.addEventListener('click', e => { if (e.target === exitPopup) exitPopup.classList.remove('show'); });
 
   // Hero video → product reveal on end
   const heroVid = document.getElementById('hero-vid');
